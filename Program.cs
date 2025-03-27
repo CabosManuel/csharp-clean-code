@@ -10,23 +10,20 @@ namespace ToDo
         static void Main(string[] args)
         {
             TaskList = new List<string>();
-            int menuSelected;
+            Menu menuSelected;
             do
             {
-                menuSelected = ShowMainMenu();
-                if (menuSelected == 1)
+                menuSelected = (Menu) ShowMainMenu();
+                switch (menuSelected)
                 {
-                    ShowMenuAdd();
+                    case Menu.Add: ShowMenuAdd();
+                        break;
+                    case Menu.Remove: ShowMenuRemove();
+                        break;
+                    case Menu.List: ShowMenuTaskList();
+                        break;
                 }
-                else if (menuSelected == 2)
-                {
-                    ShowMenuRemove();
-                }
-                else if (menuSelected == 3)
-                {
-                    ShowMenuTaskList();
-                }
-            } while (menuSelected != 4);
+            } while (menuSelected != Menu.Exit);
         }
         /// <summary>
         /// Show the main menu 
@@ -106,5 +103,13 @@ namespace ToDo
                 Console.WriteLine("----------------------------------------");
             }
         }
+    }
+
+    public enum Menu
+    {
+        Add = 1,
+        Remove = 2,
+        List = 3,
+        Exit = 4,
     }
 }

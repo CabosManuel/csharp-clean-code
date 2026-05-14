@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ToDo;
+﻿namespace ToDo;
 
 internal class Program
 {

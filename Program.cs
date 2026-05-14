@@ -21,13 +21,18 @@ internal class Program
             }
         } while (menuSelected != Menu.Exit);
     }
+
     /// <summary>
-    /// Show the main menu 
+    /// Show the options for Task
+    /// 1. Nueva tarea
+    /// 2. Remover tarea
+    /// 3. Tareas pendientes
+    /// 4. Salir
     /// </summary>
     /// <returns>Returns option indicated by user</returns>
     public static int ShowMainMenu()
     {
-        Console.WriteLine(""" 
+        Console.WriteLine("""
             Ingrese la opción a realizar:
             1. Nueva tarea
             2. Remover tarea
@@ -36,7 +41,6 @@ internal class Program
             """
         );
 
-        // Read line
         string line = Console.ReadLine();
         return Convert.ToInt32(line);
     }
@@ -49,7 +53,8 @@ internal class Program
             PrintTaskList(TaskList);
 
             string line = Console.ReadLine();
-            // Remove one position
+
+            // Remove one position because the array starts at 0 and the user starts at 1
             int indexToRemove = Convert.ToInt32(line) - 1;
 
             if (indexToRemove > TaskList.Count - 1 || indexToRemove < 0)
@@ -90,7 +95,7 @@ internal class Program
         if (TaskList?.Count > 0)
         {
             PrintTaskList(TaskList);
-        } 
+        }
         else
         {
             Console.WriteLine("No hay tareas por realizar");
